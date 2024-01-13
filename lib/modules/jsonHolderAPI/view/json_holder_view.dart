@@ -30,12 +30,12 @@ class JsonHolderView extends StatelessWidget {
     return ListView.builder(
       itemCount: value.userPostList.length,
       itemBuilder: (context, i) {
-        final items = value.userPostList[i];
+        final data = value.userPostList[i];
         return ListTile(
-          leading: CircleAvatar(child: Text(items.id.toString())),
-          title: Text(items.title.toString()),
-          subtitle: Text(items.body.toString()),
-          trailing: Text(items.userId.toString()),
+          leading: CircleAvatar(child: Text(data.id.toString())),
+          title: Text(data.title),
+          subtitle: Text(data.body),
+          trailing: Text(data.userId.toString()),
         );
       },
     );

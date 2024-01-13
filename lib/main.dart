@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_http/modules/reqresApi/view/reqres_view.dart';
 import 'package:flutter_http/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/jsonHolderAPI/provider/json_holder_provider.dart';
-import 'modules/jsonHolderAPI/view/json_holder_view.dart';
+import 'modules/reqresApi/provider/reqres_provider.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
         create: (context) => JsonHolderProvider(),
-      )
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ReqresProvider(),
+      ),
     ],
     child: const MyApp(),
   ));
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter HTTP',
       theme: AppTheme.themeData,
-      home: const JsonHolderView(),
+      home: const ReqresView(),
     );
   }
 }

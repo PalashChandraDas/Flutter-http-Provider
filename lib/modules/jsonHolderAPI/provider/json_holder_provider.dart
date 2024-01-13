@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_http/modules/jsonHolderAPI/model/jsonholder_user_post_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../model/JsonHolderPostModel.dart';
 import '../service/json_holder_service.dart';
 
 class JsonHolderProvider extends ChangeNotifier {
   final JsonHolderService _jsonHolderService = JsonHolderService();
-  List<JsonHolderPostModel> userPostList = [];
+  List<JsonHolderUserPostModel> userPostList = [];
   bool isLoading = false;
   bool isError = false;
 
@@ -30,8 +30,13 @@ class JsonHolderProvider extends ChangeNotifier {
 
         //jsonDecode for retrieve data from server
         List<dynamic> getPostDataList = jsonDecode(result.body);
-        for (var i in getPostDataList) {
-          userPostList.add(JsonHolderPostModel.fromJson(i));
+        for (var data in getPostDataList) {
+          userPostList.add(JsonHolderUserPostModel(
+              userId: data['userId'],
+              id: data['id'],
+              title: data['title'],
+              body: data['body']
+          ));
         }
         log(getPostDataList.toString());
       }

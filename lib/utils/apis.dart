@@ -4,4 +4,6 @@ class Apis{
   static const String jsonHolderEndPoint = '/posts';
 
 // 2nd API
+  static const String reqResBaseUrl = 'https://reqres.in';
+  static const String reqResEndPoint = '/api/users';
 }
